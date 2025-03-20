@@ -39,7 +39,6 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 					int id = rs.getInt(1);
 					obj.setId(id);
 				}
-				DB.closeResultSet(rs);
 			}
 			else {
 				throw new DbException("Unexpected error! No rows affected.");
@@ -150,7 +149,7 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 			throw new DbException(e.getMessage());
 		}
 		finally {
-			DB.closeConnection();
+			DB.closeStatement(st);
 		}
 	}
 
